@@ -1,0 +1,1 @@
+export default function Loading() { return <div className="container page-space" role="status"><p className="eyebrow">AJS procurement portal</p><h2>Memuat halaman…</h2><p>Menyiapkan data komoditas dan request Anda.</p></div>; }

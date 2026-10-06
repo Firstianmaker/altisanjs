@@ -1,0 +1,72 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider = "mysql"
+  url = env("DATABASE_URL")
+}
+enum Role {
+  BUYER
+  ADMIN
+}
+enum OrderStatus {
+  Requested
+  Confirmed
+  Rejected
+}
+model User {
+  id String @id @default(cuid())
+  email String @unique
+  name String
+  passwordHash String
+  role Role @default(BUYER)
+  sessions Session[]
+  orders Order[]
+}
+model Session {
+  tokenHash String @id @db.Char(64)
+  userId String
+  expiresAt DateTime
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  @@index([userId])
+  @@index([expiresAt])
+}
+model Product {
+  id String @id
+  slug String @unique
+  name String
+  englishName String
+  description String @db.Text
+  origin String
+  grade String
+  condition String
+  stock Int
+  moq Int
+  available Boolean @default(true)
+  price Int
+  image String
+  items OrderItem[]
+  updatedAt DateTime @updatedAt
+}
+model Order {
+  id String @id @default(cuid())
+  buyerId String
+  status OrderStatus @default(Requested)
+  submissionKey String @unique @db.VarChar(64)
+  createdAt DateTime @default(now())
+  reviewedAt DateTime?
+  buyer User @relation(fields: [buyerId], references: [id])
+  items OrderItem[]
+  @@index([buyerId, createdAt])
+}
+model OrderItem {
+  id String @id @default(cuid())
+  orderId String
+  productId String
+  productName String
+  quantity Int
+  unitPrice Int
+  order Order @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  product Product @relation(fields: [productId], references: [id])
+  @@unique([orderId, productId])
+}
