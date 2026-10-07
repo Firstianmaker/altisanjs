@@ -144,9 +144,10 @@ input::placeholder { color:#647781; font-weight:400; }
 .login-panel h2 { font-size:1.85rem; margin-bottom:10px; }
 .login-panel .form-stack { margin-top:28px; }
 .password-field { position:relative; display:block; }
-.password-field input { padding-right:100px; }
-.password-toggle { position:absolute; top:50%; right:12px; transform:translateY(-50%); min-height:36px; border:0; background:transparent; color:var(--ocean); font-size:.78rem; font-weight:650; padding:6px; }
-.password-toggle:hover { color:var(--navy); text-decoration:underline; }
+.password-field input { padding-right:54px; }
+.password-toggle { position:absolute; top:50%; right:7px; transform:translateY(-50%); display:grid; place-items:center; width:40px; height:40px; border:0; border-radius:3px; background:transparent; color:var(--muted); padding:8px; }
+.password-toggle svg { display:block; width:20px; height:20px; }
+.password-toggle:hover { color:var(--navy); background:#edf2f3; }
 .password-toggle:focus-visible { outline-offset:0; }
 .cart-link>span { background:#e9eef0; padding:0 6px; border-radius:3px; color:var(--navy); font-size:.75rem; }
 .cart-summary { display:flex; justify-content:space-between; align-items:center; gap:20px; background:var(--navy); color:white; padding:25px 30px; margin-block:32px; }
@@ -243,7 +244,7 @@ tfoot { background:#f2f5f3; font-weight:650; }
   .cart-item { flex-wrap:wrap; } .cart-quantity { width:100%; display:flex; justify-content:space-between; align-items:center; gap:20px; } .cart-quantity input { max-width:150px; }
 }
 @media(max-width:760px) {
-  .header-inner { min-height:82px; flex-wrap:wrap; gap:4px 18px; padding-block:14px; } nav { gap:18px; font-size:.8rem; flex-wrap:wrap; } .brand-monogram { font-size:1.8rem; }
+  .header-inner { min-height:82px; flex-wrap:wrap; gap:4px 18px; padding-block:14px; } nav { min-width:0; max-width:100%; gap:18px; font-size:.8rem; flex-wrap:wrap; } .brand-monogram { font-size:1.8rem; }
   .hero-grid { grid-template-columns:1fr; } .hero-copy { padding:40px 0; } .hero h1 { font-size:clamp(2.8rem,8vw,4rem); }
   .hero-photo { min-height:360px; margin:0 -20px; } .hero-photo>img { object-position:center 58%; }
   .hero-note { margin-top:30px; } .hero-description { max-width:550px; }
@@ -252,7 +253,7 @@ tfoot { background:#f2f5f3; font-weight:650; }
   .supply-grid { grid-template-columns:1fr; gap:30px; } .supply-section { padding-block:40px; } .supply-grid>img { height:260px; }
   .page-space { padding-block:32px 50px; } .catalog-bar { font-size:.72rem; flex-wrap:wrap; gap:5px; }
   .detail-grid { grid-template-columns:1fr; gap:30px; } .detail-description { margin-top:24px; } .detail-info { padding-top:5px; }
-  .login-layout { grid-template-columns:1fr; margin-block:20px 30px; } .login-story { padding:24px; } .login-story .eyebrow { margin-bottom:12px; } .login-story h1 { font-size:clamp(1.9rem,7vw,2.35rem); } .login-story h1 br { display:none; } .login-story>p:not(.eyebrow) { margin-top:14px; margin-bottom:0; } .login-location { margin-top:18px; padding-top:12px; } .login-panel { padding:24px; } .login-panel h2 { font-size:1.65rem; } .login-panel .form-stack { margin-top:20px; gap:15px; }
+  .login-layout { min-width:0; grid-template-columns:minmax(0,1fr); margin-block:20px 30px; } .login-story,.login-panel { min-width:0; } .login-story { padding:24px; } .login-story .eyebrow { margin-bottom:12px; } .login-story h1 { font-size:clamp(1.9rem,7vw,2.35rem); overflow-wrap:anywhere; } .login-story h1 br { display:none; } .login-story>p:not(.eyebrow) { margin-top:14px; margin-bottom:0; } .login-location { margin-top:18px; padding-top:12px; } .login-panel { padding:24px; } .login-panel h2 { font-size:1.65rem; } .login-panel .form-stack { margin-top:20px; gap:15px; }
   .availability-grid { grid-template-columns:repeat(2,1fr); } .cart-summary { padding:22px; align-items:flex-start; } .cart-summary>span { font-size:.78rem; }
   .cart-layout { grid-template-columns:1fr; } .cart-item { flex-wrap:nowrap; } .cart-quantity { width:120px; display:block; } .cart-item>img { width:90px; height:95px; }
   .stock-form { grid-template-columns:1fr 1fr; gap:10px 16px; padding:12px 18px; } .stock-product { grid-column:1/-1; } .stock-form .button { grid-column:1/-1; }
