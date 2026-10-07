@@ -64,37 +64,27 @@ Jangan commit `.env` atau membagikan connection string/password.
 
 ## Screenshot aplikasi
 
-Screenshot disimpan di `docs/screenshots/`. Buka tiap bagian untuk melihat tampilan.
+Screenshot disimpan di `docs/screenshots/` dan ditampilkan langsung di bawah.
 
-<details>
-<summary>Katalog komoditas</summary>
+### Katalog komoditas
 
 ![Halaman katalog komoditas](docs/screenshots/komoditas.png)
-</details>
 
-<details>
-<summary>Portal Buyer</summary>
+### Portal Buyer
 
 ![Dashboard Buyer](docs/screenshots/portal-buyer.png)
-</details>
 
-<details>
-<summary>Cart Buyer</summary>
+### Cart Buyer
 
 ![Halaman cart Buyer](docs/screenshots/cart.png)
-</details>
 
-<details>
-<summary>Order Request Admin</summary>
+### Order Request Admin
 
 ![Daftar order request Admin](docs/screenshots/order-request.png)
-</details>
 
-<details>
-<summary>Stock dan Availability Admin</summary>
+### Stock dan Availability Admin
 
 ![Pengaturan stock dan availability](docs/screenshots/stock-availability.png)
-</details>
 
 ## Dokumen tambahan
 
