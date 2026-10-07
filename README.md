@@ -62,6 +62,40 @@ Integration test menghapus dan membuat ulang data order pada database test. Jang
 
 Jangan commit `.env` atau membagikan connection string/password.
 
+## Screenshot aplikasi
+
+Screenshot disimpan di `docs/screenshots/`. Buka tiap bagian untuk melihat tampilan.
+
+<details>
+<summary>Katalog komoditas</summary>
+
+![Halaman katalog komoditas](docs/screenshots/komoditas.png)
+</details>
+
+<details>
+<summary>Portal Buyer</summary>
+
+![Dashboard Buyer](docs/screenshots/portal-buyer.png)
+</details>
+
+<details>
+<summary>Cart Buyer</summary>
+
+![Halaman cart Buyer](docs/screenshots/cart.png)
+</details>
+
+<details>
+<summary>Order Request Admin</summary>
+
+![Daftar order request Admin](docs/screenshots/order-request.png)
+</details>
+
+<details>
+<summary>Stock dan Availability Admin</summary>
+
+![Pengaturan stock dan availability](docs/screenshots/stock-availability.png)
+</details>
+
 ## Dokumen tambahan
 
 - `docs/SUBMISSION.md`: ringkasan implementasi dan keputusan project.

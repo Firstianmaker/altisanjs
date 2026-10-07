@@ -26,4 +26,8 @@ Data demo lokal memuat request hasil pengujian. Seed ulang tidak mereset stock. 
 
 Server preview sempat berhenti setelah sesi perintah berakhir. Server dan MySQL kemudian dijalankan ulang sebagai proses latar belakang. `http://localhost:3000` diverifikasi kembali memberikan HTTP 200.
 
-Pemeriksaan visual seluruh halaman pada semua ukuran layar belum diklaim lengkap; preview siap untuk review dan revisi UI pengguna. Deployment tidak dilakukan.
+Pemeriksaan visual seluruh halaman pada semua ukuran layar belum diklaim lengkap; preview lokal siap untuk review dan revisi UI pengguna.
+
+## Demo deployment Vercel — 7 Oktober 2026
+
+Aplikasi tersedia di [https://altisanjs.vercel.app](https://altisanjs.vercel.app). Setelah konfigurasi `APP_URL` diperbaiki menggunakan URL HTTPS lengkap, pengguna mengonfirmasi bahwa demo pada deployment dijalankan ulang. Pengujian awal di atas tetap merujuk pada sesi lokal tanggal 6 Oktober 2026.
