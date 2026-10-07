@@ -76,6 +76,7 @@ em { font-family:Georgia,"Times New Roman",serif; font-weight:400; }
 .section-heading>.button { flex-shrink:0; }
 .section-heading.compact { align-items:center; margin-bottom:20px; }
 .section-heading.compact h2 { font-size:1.5rem; }
+.buyer-page>.section-heading h1,.cart-page .page-intro h1 { font-size:clamp(1.85rem,3.6vw,2.65rem); }
 .product-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:22px; }
 .product-card { background:white; border:1px solid var(--line); }
 .product-image { display:block; position:relative; overflow:hidden; aspect-ratio:1.5; }
@@ -254,6 +255,7 @@ tfoot { background:#f2f5f3; font-weight:650; }
   .page-space { padding-block:32px 50px; } .catalog-bar { font-size:.72rem; flex-wrap:wrap; gap:5px; }
   .detail-grid { grid-template-columns:1fr; gap:30px; } .detail-description { margin-top:24px; } .detail-info { padding-top:5px; }
   .login-layout { min-width:0; grid-template-columns:minmax(0,1fr); margin-block:20px 30px; } .login-story,.login-panel { min-width:0; } .login-story { padding:24px; } .login-story .eyebrow { margin-bottom:12px; } .login-story h1 { font-size:clamp(1.9rem,7vw,2.35rem); overflow-wrap:anywhere; } .login-story h1 br { display:none; } .login-story>p:not(.eyebrow) { margin-top:14px; margin-bottom:0; } .login-location { margin-top:18px; padding-top:12px; } .login-panel { padding:24px; } .login-panel h2 { font-size:1.65rem; } .login-panel .form-stack { margin-top:20px; gap:15px; }
+  .buyer-page>.section-heading h1,.cart-page .page-intro h1 { font-size:clamp(1.7rem,7vw,2.25rem); }
   .availability-grid { grid-template-columns:repeat(2,1fr); } .cart-summary { padding:22px; align-items:flex-start; } .cart-summary>span { font-size:.78rem; }
   .cart-layout { grid-template-columns:1fr; } .cart-item { flex-wrap:nowrap; } .cart-quantity { width:120px; display:block; } .cart-item>img { width:90px; height:95px; }
   .stock-form { grid-template-columns:1fr 1fr; gap:10px 16px; padding:12px 18px; } .stock-product { grid-column:1/-1; } .stock-form .button { grid-column:1/-1; }
