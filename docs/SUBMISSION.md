@@ -1,34 +1,30 @@
-# Ringkasan Submission AJS
+# Catatan Submission AJS
 
-## Hasil implementasi
+**Project:** AJS Fish Commodity Supply Portal
 
-Portal procurement B2B dengan website publik (homepage, katalog, detail komoditas), akses Buyer, dan panel Admin. Buyer dapat mengirim serta memantau request order. Admin dapat memfilter dan meninjau request, mengubah stock/availability, serta membuka katalog dari panel. Katalog berisi empat komoditas dari brief beserta origin, grade, condition, stock, dan MOQ.
+**Demo:** [https://altisanjs.vercel.app](https://altisanjs.vercel.app)
 
-## Aturan bisnis yang diterapkan
+## Yang sudah selesai
 
-- Request baru berstatus **Requested** dan tidak menahan stock.
-- Quantity harus berupa KG bulat positif, memenuhi MOQ, dan tidak melebihi stock tersedia.
-- Saat konfirmasi, stock diperiksa ulang lalu dikurangi dalam satu transaksi. Jika satu item gagal, seluruh konfirmasi dibatalkan. Konfirmasi berulang tidak mengurangi stock lagi.
-- Penolakan tidak mengubah stock. Stock di atas 0 berarti **Available**; stock 0 berarti **Unavailable**.
-- Harga per KG adalah data sintetis untuk demo. Total hanya estimasi; request bukan pembayaran atau quotation final.
-- Buyer hanya dapat melihat request miliknya. Akses Admin dan perubahan data diperiksa di server.
+- Website publik dengan homepage, katalog, dan detail empat komoditas sesuai data brief.
+- Login Buyer dan Admin tanpa registrasi; Buyer dapat mengelola cart, mengirim request, serta melihat riwayatnya.
+- Panel Admin untuk melihat dan memfilter request, mengonfirmasi/menolak request, mengatur stock/availability, dan membuka katalog.
+- Validasi MOQ dan quantity, pengecekan stock di server, pembatasan akses berdasarkan role, serta penyimpanan data di MySQL.
+- Catatan setup lokal, akun demo, aturan utama, dan pengujian tersedia di `README.md`.
 
-## Keputusan dan batasan
+## Yang belum termasuk
 
-- Stack yang digunakan: Next.js, TypeScript, MySQL, Prisma, dan Tailwind CSS.
-- Cart berada di browser dan tidak mereservasi stock. Server menentukan harga dan memvalidasi stock saat submit.
-- Login memakai akun demo Buyer/Admin tanpa registrasi. Password di-hash; session disimpan di database.
-- Belum termasuk pembayaran, registrasi, notifikasi WhatsApp/email, integrasi warehouse/ERP, upload foto, CRUD produk lengkap, dan paginasi untuk volume besar.
-- Deployment ditangani pengguna. Sertakan URL demo setelah alur login dan request berhasil diuji pada domain deployment.
+- Pembayaran, registrasi Buyer, notifikasi email/WhatsApp, integrasi ERP/warehouse, unggah foto, dan CRUD produk lengkap.
+- Paginasi untuk volume data besar, rate limiting login, dan hardening untuk penggunaan produksi.
+- Pengujian visual menyeluruh pada semua halaman dan ukuran layar. Deployment Vercel dikelola pengguna; sebelum submission, pastikan login dan alur request berhasil pada URL demo.
 
-## Skenario demo
+## Keputusan teknis utama
 
-1. Buka homepage, katalog, lalu detail Cakalang.
-2. Login Buyer dan kirim request **300 KG**. Request berstatus Requested; stock tetap **850 KG**.
-3. Login Admin, buka request dan konfirmasi. Stock menjadi **550 KG**.
+- **Next.js + TypeScript** untuk website dan API dalam satu aplikasi; **MySQL + Prisma** untuk penyimpanan; **Tailwind CSS** untuk UI.
+- Cart berada di browser dan tidak mereservasi stock. Server menjadi sumber kebenaran untuk harga, akses, dan validasi saat request dikirim.
+- Status request: `Requested` → `Confirmed` atau `Rejected`. Konfirmasi memeriksa ulang seluruh item dan mengurangi stock dalam satu transaksi; kegagalan satu item membatalkan seluruh konfirmasi.
+- Harga merupakan data sintetis untuk estimasi. Buyer hanya dapat membaca request miliknya; password di-hash dan session memakai cookie HttpOnly.
 
-## Dokumen pendukung
+## Demo yang disarankan
 
-- `README.md`: cara menjalankan lokal, akun demo, aturan utama, dan pengujian.
-- `docs/AI_USAGE.md`: penggunaan AI dan bagian kode yang perlu dipahami.
-- `docs/TEST_RESULTS.md`: hasil pengujian yang telah dijalankan serta catatan cakupannya.
+Buyer mengirim request **300 KG Cakalang** dari stock awal **850 KG**. Stock tetap 850 KG selama request menunggu review, lalu menjadi **550 KG** setelah Admin mengonfirmasi. Hasil pengujian rinci ada di `docs/TEST_RESULTS.md`.
