@@ -1,19 +1,34 @@
-# Catatan submission AJS
+# Ringkasan Submission AJS
 
-## Implementasi
+## Hasil implementasi
 
-Website publik (homepage, catalog, detail), login Buyer/Admin, dashboard buyer, cart, pengiriman dan riwayat request, review admin Confirmed/Rejected, serta update stock/availability. Data dan akun tersimpan di MySQL. Empat komoditas, stock awal, grade, origin, condition, dan MOQ mengikuti brief. Harga per KG merupakan dummy yang dicatat di README; UI menampilkan estimasi dan keterangan konfirmasi harga tanpa pembayaran.
+Portal procurement B2B dengan website publik (homepage, katalog, detail komoditas), akses Buyer, dan panel Admin. Buyer dapat mengirim serta memantau request order. Admin dapat memfilter dan meninjau request, mengubah stock/availability, serta membuka katalog dari panel. Katalog berisi empat komoditas dari brief beserta origin, grade, condition, stock, dan MOQ.
 
-## Keputusan utama
+## Aturan bisnis yang diterapkan
 
-Next.js full-stack + TypeScript + MySQL + Prisma + Tailwind dipilih agar frontend/backend berada dalam satu project. Cart di browser tidak mengikat stock. Submit memeriksa availability/quantity; admin mengonfirmasi melalui transaksi Serializable, pemeriksaan ulang stock, dan update bersyarat. Jika satu item gagal, seluruh konfirmasi dibatalkan. Submission key mencegah duplikasi request saat retry; snapshot nama/harga menjaga riwayat.
+- Request baru berstatus **Requested** dan tidak menahan stock.
+- Quantity harus berupa KG bulat positif, memenuhi MOQ, dan tidak melebihi stock tersedia.
+- Saat konfirmasi, stock diperiksa ulang lalu dikurangi dalam satu transaksi. Jika satu item gagal, seluruh konfirmasi dibatalkan. Konfirmasi berulang tidak mengurangi stock lagi.
+- Penolakan tidak mengubah stock. Stock di atas 0 berarti **Available**; stock 0 berarti **Unavailable**.
+- Harga per KG adalah data sintetis untuk demo. Total hanya estimasi; request bukan pembayaran atau quotation final.
+- Buyer hanya dapat melihat request miliknya. Akses Admin dan perubahan data diperiksa di server.
 
-Login menggunakan scrypt dan session database dengan cookie HttpOnly. Buyer hanya dapat membaca order miliknya. Semua perubahan admin dibatasi role di server. Quantity memakai KG bulat dan MOQ diterapkan sebagai minimum.
+## Keputusan dan batasan
 
-## Belum termasuk
+- Stack yang digunakan: Next.js, TypeScript, MySQL, Prisma, dan Tailwind CSS.
+- Cart berada di browser dan tidak mereservasi stock. Server menentukan harga dan memvalidasi stock saat submit.
+- Login memakai akun demo Buyer/Admin tanpa registrasi. Password di-hash; session disimpan di database.
+- Belum termasuk pembayaran, registrasi, notifikasi WhatsApp/email, integrasi warehouse/ERP, upload foto, CRUD produk lengkap, dan paginasi untuk volume besar.
+- Deployment ditangani pengguna. Sertakan URL demo setelah alur login dan request berhasil diuji pada domain deployment.
 
-Deployment ditangani pengguna. Tidak ada payment, registrasi, WhatsApp/email, integrasi warehouse/ERP, CRUD produk lengkap, upload foto, advanced permissions, paginasi volume besar, dan hardening produksi. Data produk selain stock dapat dikelola melalui database/seed. Harga belum merupakan quotation final. Detail autentikasi dan aturan stock perlu dijelaskan kandidat dalam demo.
+## Skenario demo
 
-## Verifikasi
+1. Buka homepage, katalog, lalu detail Cakalang.
+2. Login Buyer dan kirim request **300 KG**. Request berstatus Requested; stock tetap **850 KG**.
+3. Login Admin, buka request dan konfirmasi. Stock menjadi **550 KG**.
 
-Hasil eksekusi pengujian dicatat pada `docs/TEST_RESULTS.md` setelah pemeriksaan selesai. Skenario demo: 300 KG Cakalang dari stock awal 850 KG; submit tetap 850, konfirmasi menjadi 550. README memuat setup, akun demo, dan langkah demo maksimal 10 menit.
+## Dokumen pendukung
+
+- `README.md`: cara menjalankan lokal, akun demo, aturan utama, dan pengujian.
+- `docs/AI_USAGE.md`: penggunaan AI dan bagian kode yang perlu dipahami.
+- `docs/TEST_RESULTS.md`: hasil pengujian yang telah dijalankan serta catatan cakupannya.

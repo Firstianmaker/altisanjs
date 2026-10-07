@@ -2,6 +2,8 @@
 
 Portal procurement B2B untuk PT Altisan Jaya Sinergi. Buyer dapat melihat komoditas dan mengirim request order; Admin dapat meninjau request serta mengatur stock. Aplikasi menggunakan Next.js, TypeScript, MySQL, Prisma, dan Tailwind CSS.
 
+**Demo online:** [https://altisanjs.vercel.app](https://altisanjs.vercel.app)
+
 ## Menjalankan secara lokal
 
 Siapkan Node.js 22.17+, npm, dan MySQL 8.4. Buat database `ajs_portal` (misalnya lewat phpMyAdmin atau jalankan SQL berikut):
