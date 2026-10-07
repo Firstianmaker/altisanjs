@@ -2,7 +2,7 @@
 import { useState, type FormEvent } from "react";
 import { useRouter } from "next/navigation";
 export function LoginForm({ next }: { next: string }) {
-  const router = useRouter(); const [busy, setBusy] = useState(false); const [error, setError] = useState("");
+  const router = useRouter(); const [busy, setBusy] = useState(false); const [error, setError] = useState(""); const [showPassword, setShowPassword] = useState(false);
   async function submit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault(); setBusy(true); setError("");
     const data = new FormData(e.currentTarget);
@@ -15,7 +15,7 @@ export function LoginForm({ next }: { next: string }) {
   }
   return <form onSubmit={submit} className="form-stack">
     <label>Email<input name="email" type="email" autoComplete="username" placeholder="Email akun Anda" required maxLength={200} /></label>
-    <label>Password<input name="password" type="password" autoComplete="current-password" placeholder="Password akun Anda" required maxLength={200} /></label>
+    <label>Password<span className="password-field"><input name="password" type={showPassword ? "text" : "password"} autoComplete="current-password" placeholder="Password akun Anda" required maxLength={200} /><button className="password-toggle" type="button" onClick={() => setShowPassword((visible) => !visible)} aria-label={showPassword ? "Sembunyikan password" : "Tampilkan password"} aria-pressed={showPassword}>{showPassword ? "Sembunyikan" : "Tampilkan"}</button></span></label>
     {error && <p className="error" role="alert">{error}</p>}
     <button className="button full" disabled={busy}>{busy ? "Memeriksa akun…" : "Masuk portal"}<span aria-hidden>→</span></button>
   </form>;
